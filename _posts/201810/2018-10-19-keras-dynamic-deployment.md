@@ -9,19 +9,24 @@ author: "Victor"
 ---
 
 aiServerAPI服务搭建
+
 20181011_v1
 20181019_v2
 lida@youyuan.com
 
 ## 1.项目背景
     Ai项目网站在整合模型的时候，变得繁重和缓慢，在生成环境和开发环境，都存在瓶颈问题，故将模型相关的服务器抽取成一个API服务，使用Django进行搭建。
+
 ## 2.项目环境
 搭建服务器：192.168.16.36
 项目路径：/opt/web/aiServer/
 
 Python版本：python3.5
+
 Django版本：django 2.0
+
 ## 3.项目搭建
+
 cd /opt/web
 ```
 python3 -m pip install virtualenv
@@ -39,10 +44,6 @@ python3 manage.py migrate
 
 python3 manage.py createsuperuser --email admin@example.com --username admin
 : 密码：  admin123
-
-
-
-
 (env_django2.0) 192-168-16-36.youyuan-idc.com [/opt/web/aiServer] 2018-10-11 14:45:10
 root@pts/6 # find .
 
