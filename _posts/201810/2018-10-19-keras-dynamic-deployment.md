@@ -15,7 +15,7 @@ aiServerAPI服务搭建
 lida@youyuan.com
 
 ## 1.项目背景
-    Ai项目网站在整合模型的时候，变得繁重和缓慢，在生成环境和开发环境，都存在瓶颈问题，故将模型相关的服务器抽取成一个API服务，使用Django进行搭建。
+Ai项目网站在整合模型的时候，变得繁重和缓慢，在生成环境和开发环境，都存在瓶颈问题，故将模型相关的服务器抽取成一个API服务，使用Django进行搭建。
 
 ## 2.项目环境
 搭建服务器：192.168.16.36
@@ -331,23 +331,23 @@ modelList = loadModelLocal()
 - http://192.168.16.36:8099/predictsex/
 - http://192.168.16.36:8099/facescore/
 - http://192.168.16.36:8099/predictsex_loadmodel/
+
 ### 4.5.模型部署问题点
 
 - 问题点描述
-
- - keras.backend.clear_session() 导致后面模型加载时，前面的模型被clean；
- - 两个模型不能同时进行API的reload操作，因为他们使用相同的session，会报错；
- - 单个模型加载时，所有的模型操作都无法进行；
+  - keras.backend.clear_session() 导致后面模型加载时，前面的模型被clean；
+  - 两个模型不能同时进行API的reload操作，因为他们使用相同的session，会报错；
+  - 单个模型加载时，所有的模型操作都无法进行；
  
 - 总之，以上的部署，在项目启动的时候，不会有问题，模型顺利加载。后面进行模型预测也没问题，但是一旦使用api 的模型reload操作，就会出现各种问题。不能进行模型的动态加载和多模型的并发使用。
 
 - 归结到底，产生的问题是：
- - 模型不能动态加载
- - 模型需要重启服务
+  - 模型不能动态加载
+  - 模型需要重启服务
  
 - 产生问题的主要原因是：
- - 模型都使用了tensorflow的同一个session和graph；
- - ad_model 和 predict不在同一个线程； （https://zhuanlan.zhihu.com/p/27101000）
+  - 模型都使用了tensorflow的同一个session和graph；
+  - ad_model 和 predict不在同一个线程； （https://zhuanlan.zhihu.com/p/27101000）
 
 ## 5.项目的最终开发
 ### 5.1.Tensorflow的设置
