@@ -10,15 +10,14 @@ author: "Victor"
 
 aiServerAPI服务搭建
 
-20181011_v1
 20181019_v2
-lida@youyuan.com
+lida@foxmail.com
 
 ## 1.项目背景
 Ai项目网站在整合模型的时候，变得繁重和缓慢，在生成环境和开发环境，都存在瓶颈问题，故将模型相关的服务器抽取成一个API服务，使用Django进行搭建。
 
 ## 2.项目环境
-搭建服务器：192.168.16.36
+搭建服务器：192.168.**.**
 项目路径：/opt/web/aiServer/
 
 Python版本：python3.5
@@ -33,7 +32,7 @@ python3 -m pip install virtualenv
 virtualenv env_django2.0
 source env_django2.0/bin/activate
 
-python -m pip install django==2.0     1017
+python -m pip install django==2.0
 python3 -m pip install djangorestframework
 python -m pip install django-filter
 python -m pip install markdown
@@ -44,7 +43,7 @@ python3 manage.py migrate
 
 python3 manage.py createsuperuser --email admin@example.com --username admin
 : 密码：  admin123
-(env_django2.0) 192-168-16-36.youyuan-idc.com [/opt/web/aiServer] 2018-10-11 14:45:10
+(env_django2.0) 192-168-**-**.idc.com [/opt/web/aiServer] 2018-10-11 14:45:10
 root@pts/6 # find .
 
 .
@@ -178,7 +177,7 @@ Web端访问：
 
 命令行访问：
 ```
-curl -H 'Accept: application/json; indent=4' -u admin:admin123 http://192.168.16.36:8099/users/
+curl -H 'Accept: application/json; indent=4' -u admin:admin123 http://192.168.**.**:8099/users/
 ```
 
 ### 4.3.模型环境部署
@@ -328,9 +327,9 @@ modelList = loadModelLocal()
 
 效果：项目启动，所有应用py都到各自设定的目录下加载模型，启动较慢.运行时，通过api可以出发不同的应用py更新自己的模型.
 
-- http://192.168.16.36:8099/predictsex/
-- http://192.168.16.36:8099/facescore/
-- http://192.168.16.36:8099/predictsex_loadmodel/
+- http://192.168.**.**:8099/predictsex/
+- http://192.168.**.**:8099/facescore/
+- http://192.168.**.**:8099/predictsex_loadmodel/
 
 ### 4.5.模型部署问题点
 
